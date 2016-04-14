@@ -24,6 +24,8 @@ define(function(require, exports, module){
         }
 	}
 
+
+	ajax.request = request;
 	ajax.request = request;
 
 	module.exports = ajax;
