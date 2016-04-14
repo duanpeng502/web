@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按钮</title>
+    <style>
+        body{
+
+            font:62.5% "Microsoft Yahei";
+        }
+        body{
+            font-size: 4em;
+        }
+    </style>
+</head>
+<body>
+    <p id="touch_word">触摸屏</p>
+    <button id="_msg_btn">触摸</button>
+    <input type="button" value="touch me" id="touch_btn1">
+    <script>
+    var touch_btn1 = document.getElementById("touch_btn1");
+    var touch_word = document.getElementById("touch_word");
+    var _msg_btn = document.getElementById("_msg_btn");
+    function fun(e){
+        // e.preventDefault();
+        alert("success");
+    }
+    _msg_btn.addEventListener("touchend",fun,true);
+    touch_word.addEventListener("touchend",fun,true);
+    touch_btn1.addEventListener("touchend",fun,true);
+    </script>
+</body>
+</html>
