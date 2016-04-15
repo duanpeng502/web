@@ -48,5 +48,5 @@ http.createServer(web).listen(web.get('port'),
 web.post('/login',routefun.login);
 
 web.get("/ajax", routefun.ajax);
-web.post("/ajax", routefun.ajax);
+// web.post("/ajax", routefun.ajax);
 

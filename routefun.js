@@ -37,6 +37,6 @@ exports.login = function (req,res) {
 //  ajax test
 exports.ajax = function(req, res){
 
-    console.log("req")
+    console.log("req", req.query)
     res.json({"name":"heke"});
 }

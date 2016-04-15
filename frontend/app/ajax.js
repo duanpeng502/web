@@ -3,7 +3,7 @@ define(function(require, exports, module){
 // ajax初始化
 	var ajax = {};
 	function request(param){
-		this.xhr = new XMLHttpRequest();
+		xhr = new XMLHttpRequest();
 
 		if( typeof param != "object"){
             return;
@@ -14,19 +14,34 @@ define(function(require, exports, module){
             url = param.url || "",
             async = param.async || false;
 
-		this.xhr.open(type, url, async);
-		this.xhr.send(data);
+        url = addURLParam(url, "name", "yunkehe");
 
-        if((this.xhr.status >= 200 && this.xhr.status < 300) || this.xhr.status == 304){
-            alert(this.xhr.responseText);
-        }else{
-            alert("Request was unsuccessful: "+this.xhr.status);
-        }
-	}
+		xhr.open(type, url, async);
+		// 自定义请求头
+		// xhr.setRequestHeader("myheader", "myvalue");
+		xhr.send(data);
 
+		xhr.onreadystatechange = function(){
 
-	ajax.request = request;
-	ajax.request = request;
+	        if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+	            alert(xhr.responseText);
+	        }else{
+	            alert("Request was unsuccessful: "+xhr.status);
+	        }
+		}
+
+		// 停止触发事件
+		xhr.abort();
+    }
+
+    function addURLParam(url, name, value){
+    	url += (url.indexOf("?") == -1) ? "?" : "&";
+    	url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+    	return url;
+    }
+
+    ajax.request = request;
 
 	module.exports = ajax;
 
