@@ -6,44 +6,32 @@
     *   加载模块
     */
  //加载 在node_modules 的 express 模块
-var express = require('express')
-    , http = require('http')
-     , routefun = require('./routefun.js')
-    , path = require('path');
-
-//  express  初始化
+var express = require('express');
 var app = express();
 
-// 设置服务的监听端口
-app.set('port', 8000);
+var config = require("./config.js");
 
-//  设置express 寻找资源（客户端的）的位置
-app.use(express.static(__dirname + '/frontend'));
-// 设置 ejs 引擎，这里是通过express 去帮助我们加载
-app.set('view engine','ejs');
-// 设置ejs 文件存放位置
-app.set('views',__dirname + '/frontend/ejsfile');
-// 设置站点图标
-app.use(express.favicon());
-// 设置日志
-app.use(express.logger('dev'));   // 日志
+// 配置静态文件路径
+app.use(express.static('public'));
 
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'frontend/html')));
+app.get('/', function(req, res){
+    res.send('./frontend/index.html');
+});
 
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
+var server = app.listen(9000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
 
-http.createServer(app).listen(app.get('port'),
-    function(){
-        console.log('Express port ' + app.get('port'));
-    });
+  console.log('My app listening at http://%s:%s', host, port);
+});
 
-//----------- 路由开始---------------------
+// 配置子模块启动
+config.app.forEach(function(v, i){
+    app.get('/'+v, function(req, res){
+        res.send(v);
+    })
+})
 
-app.post('/login',routefun.login);
+
+
 
