@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性文本</title>
+	<script src="../public/js/jquery-1.12.4.min.js"></script>
+	<style>
+		.stretch-box,
+		.stretch{
+			cursor: pointer;
+		}
+		.stretch-box{
+			position: relative;
+		}
+		.stretch{
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<input id="edit-input" type="text" placeholder="请输入文本" />
+	<p id="output"></p>
+</body>
+<script>
+	var $output = $("#output");
+
+	function stretchTextInit(text, $output){
+		var text = text;
+		var texts = text.split(""),
+			html = "";
+
+		texts.forEach(function(v, i){
+			html += '<span class="stretch">'+v+'</span>';
+		})
+
+		$output.html(html);
+
+		var mousePostion = {
+			X: 0,
+			Y: 0,
+			scale : 1.353,
+			distance: 4,
+			top: 20,
+			parent_top: $output.offset().top + $output.height()/2
+		};
+
+		$output.bind("mousemove", function(e){
+			var currentY = e.offsetY;
+			mousePostion.top = currentY - mousePostion.parent_top
+
+			// console.log("mousePostion.top", mousePostion.top, e);
+		})
+
+		$output.find("span").bind("mousemove", function(e){
+			// mousePostion.X = e.clientX;
+			var currentY = e.clientY,
+				$target = $(e.currentTarget);
+		
+			mousePostion.top = currentY - mousePostion.parent_top;
+			var abs = parseInt(mousePostion.top);
+
+			console.log("mousePostion.top", mousePostion.top);
+			// 判断移动方向
+			if( abs < 30){
+
+				if(mousePostion.top > 0){
+					// 向下移动
+					$target.css("top", mousePostion.top+"px");
+					changePostion($target)
+
+				}else{
+					$target.css("top", mousePostion.top+"px");
+					changePostion($target, true)
+				}
+			}else{
+				$output.find("span").css("top", "0px");
+			}
+
+		}).bind("mouseout", function(e){
+			$output.find("span").css("top", "0px");
+		})
+
+		function changePostion($target, direction){
+			var $prev = $target.prevAll(),
+				$next = $target.nextAll();
+
+			function setStyle(i, v){
+				var real_top = direction ? mousePostion.top+(i+1)*mousePostion.scale : mousePostion.top-(i+1)*mousePostion.scale;
+					$(v).css("top", real_top+"px" )
+			};
+
+			$prev.each(setStyle);
+
+			$next.each(setStyle);
+		};
+
+		$("#edit-input").bind('mousemove', function(e){
+				console.log("e", e)
+		})
+	};
+
+	stretchTextInit("用于测试的一段文本这是一段用来测试的文本", $output);
+
+
+</script>
+</html>
