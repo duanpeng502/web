@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据变化同步</title>
+	<script src="../../public/js/jquery-1.12.4.min.js"></script>
+	<script src="../../public/js/underscore-1.8.3.min.js"></script>
+	<script src="../hiker/js/hiker.js"></script>
+	<script ></script>
+</head>
+<body>
+	<input type="text" >
+	<ul id="ul1" h="model1">
+		<li>
+			<p id="age" h="name">姓名</p>
+			<p id="name" h="age">年龄</p>
+		</li>
+		<li>
+			<p></p>
+		</li>
+	</ul>
+	<ul id="ul2">
+		<li></li>
+		<li h="father.name">你很好</li>
+	</ul>
+	<p id="p2">word</p>
+</body>
+<script>
+	var data = [{"name": "heke", "age": 26}, {"name": "Frank", "age": 30}],
+		obj = {"name": "heke", "age": 26},
+		obj2 = {"name": "heke", "age": 26, "father": {"name": "heqide", "age": 50}};
+
+	// 1. 包装 将数组或对象用hiker包装
+	// 2. 注册 注册change事件当值发生改变时 触发事件
+	// 3. 触发 值改变时触发change方法
+
+	var model1 = Hiker({"data": obj, "el": "#ul1"}),
+		model2 = Hiker({"data": obj2, "el": "#ul2"});
+
+	// obj.address = "hello";
+
+</script>
+</html>
