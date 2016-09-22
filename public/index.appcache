@@ -1,0 +1,8 @@
+CACHE MANIFEST
+
+CACHE:
+index.html
+test_cache.js
+
+NETWORK:
+css/reset.css

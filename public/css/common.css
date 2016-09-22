@@ -1,0 +1,9 @@
+@font-face{
+	font-family: "Flat";
+	src: url("../fonts/Flat-UI-Icons-16.ttf") format("truetype");
+}
+
+.flat{
+	font-family: "Flat";
+	font-size: 28px;
+}
