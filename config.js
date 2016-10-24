@@ -1,5 +1,5 @@
 var config = {
-	'app' : ['syncData', 'test', 'index']
+	'app' : ['about', 'index']
 };
 
 module.exports = config;

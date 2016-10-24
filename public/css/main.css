@@ -1,0 +1,50 @@
+
+body{
+	background-color: #f3f3f3;
+	line-height: 1;
+	vertical-align: baseline;
+	font-size: 16.5px;
+}
+/* bootstrap stylesheet reset*/
+ul, ol{
+	margin-bottom: 0;
+}
+
+#wrapper{
+	/*margin-top: 180px;*/
+}
+.card{
+	margin: 0 auto;
+	text-align: center;
+	border-radius: .5rem;
+	overflow: hidden;
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);
+	left: 1.5rem;
+	right: 1.5rem;
+	max-width: 23.75em; 
+	box-shadow: 0 1px 0 #fff inset, 
+				0 0 0 1px rgba(0, 0, 0, 0.05), 
+				0 8px 16px rgba(0, 0, 0, 0.05), 
+				0 1px 2px rgba(0, 0, 0, 0.05), 
+				0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.intro{
+	padding: 20px 0;
+	background-color: #fff;
+}
+.intro{
+	line-height: 1.2;
+}
+.intro h2{
+	font-weight: bold;
+	font-size: 1.8em;
+}
+.intro p{
+	font-size: 1.1em;
+}
+.icon-box{
+	padding: 10px 0;
+	background: linear-gradient(to right, #ff8c2e, #fd9ef9);
+}

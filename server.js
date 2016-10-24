@@ -15,7 +15,7 @@ var config = require("./config.js");
 app.use(express.static('public'));
 
 app.get('/', function(req, res){
-    res.send('./public/index.html');
+    res.send('public/index.html');
 });
 
 var server = app.listen(9001, function () {
