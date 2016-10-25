@@ -1,0 +1,41 @@
+/* bootstrap some css reset*/
+ol, ul{margin: 0;padding: 0; list-style: none;}
+a:focus{outline: none;}
+a:link,
+a:hover,
+a:visited{
+	color: #000;
+}
+/* comman stylesheet created by heke */
+/*@font-face{
+	font-family: "Flat";
+	src: url("../fonts/Flat-UI-Icons-16.ttf") format("truetype");
+}
+.flat{
+	font-family: "Flat";
+	font-size: 28px;
+}*/
+body{
+	background-image: url(../images/bg-1.png);
+}
+i.icon30{
+	display: inline-block;
+}
+i.icon30{
+	width: 30px;
+	height: 30px;
+	background-size: 100%;
+}
+
+i.icon-gmail{
+	background-image: url(../images/icon_email.png);
+}
+
+a.logo-btn{
+	/*background-image: url(../images/logo.png);*/
+	/*background-position: center;*/
+}
+p.quote-from{
+	text-indent: 1em;
+	opacity: .6;
+}

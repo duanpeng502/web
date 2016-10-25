@@ -1,1 +1,0 @@
-console.log("This page did some html5 appcache!")
