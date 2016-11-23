@@ -34,6 +34,7 @@
 		ctx.closePath();
 	}
 
+	// 返回max到min之间的整随机数
 	function getRandom(max, min){
 		return Math.floor( Math.random()*(max-min)+min );
 	}
@@ -49,10 +50,10 @@
 		this.radius = getRandom(30, 10);
 		this.color = colors[getRandom(colors.length, 0)];
 
-		var speed = getRandom(6, 3);
+		var speed = getRandom(8, 3);
 
 		// 根据角度计算随机方向
-		var direction = getRandom(Math.PI*2, 0);
+		var direction = Math.random()*Math.PI*2;
 
 		this.moveX = Math.cos(direction)*speed;
 		this.moveY = Math.sin(direction)*speed;
@@ -89,7 +90,6 @@
 		drawCircle(this.x, this.y, this.radius, this.color);
 		
 	}
-
 
 	function start(){
 		var balls = [];
